@@ -7,21 +7,27 @@ import favouriteRouter from './router/favourite.js';
 import cartRouter from './router/cartRouter.js';
 import orderRouter from './router/oderRouter.js';
 import cors from "cors";
-// const express = require("express")
+import payment from './router/payment.js'
+
+// const express = require("express")   
 // require('dotenv').config()
 
 const app = express();
 const PORT = process.env.PORT || 4000
+
 connection()
 
 app.use(cors());
 app.use(express.json());
+
 // routes
 app.use("/api/v1" , router )
 app.use("/api/v1" , bookRouter)
 app.use("/api/v1" , favouriteRouter)
 app.use("/api/v1" , cartRouter)
 app.use("/api/v1" , orderRouter)
+app.use("/api/v1" , payment)
+
 
 app.listen(PORT, () => {
     console.log(`Server started at port ${PORT}`)
